@@ -1,0 +1,1065 @@
+<html><head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lemonada">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM Plex Mono">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter">
+    <title>My Windows</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <div class="loader"><div class="loader1 topleft"></div><span class="centered"><span class="large"><sup></sup></span><br><span style="font-family:'IBM Plex Mono'"></span></span></div>
+    <div class="login centered" style="display:none;">
+         PIN...<br>
+        <input type="password" class="in" autofocus="on" onkeypress="triggerByEnter(event)">
+        <button class="btn" onclick="validate()">enter »</button>
+    </div>
+    <div id="home" class="zoom" style="display:none;">
+    <table class="homeCont">
+        <tbody><tr style="padding:10px">
+<td style="background-color:#0b78d1" onclick="showApp('calculator')">
+<img src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Calculator-icon.png" width="70px" height="70px"><br>Calculator</td>
+<td onclick="showApp('converter')" style="background-color:#96a41d"><img src="https://cdn6.aptoide.com/imgs/a/d/5/ad5ab09beda441a5da4aab664d432f14_icon.png?w\u003d240" width="70px" height="70px"><br>Converter</td>
+<td onclick="showApp('tools')" style="background-color:#c5170a"><h1>+</h1>More tools</td></tr>
+
+        <tr style="padding:10px"><td style="background-color:#9e8e00" onclick="showApp('ToDoList')"><img src="https://cdn3.iconfinder.com/data/icons/business-office/256/To-do_List-512.png" width="70px" height="70px"><br>To-do list</td>
+<td style="background-color:#0b78d1style=" opacity:0.7""="" onclick="showApp('search')"><img src="http://files.softicons.com/download/system-icons/windows-8-metro-invert-icons-by-dakirby309/png/256x256/Other/Search.png" width="70px" height="70px"><br>Search</td>
+<td rowspan="3" style="background-color:#9c27b0"><h2 style="padding:0;margin:0;"><span id="time"></span></h2></td></tr>
+
+        <tr style="padding:10px"><td style="background-color:#074b83" onclick="showApp('setting')"><img src="https://i.imgur.com/tNPCRUG.png" width="70px" height="70px"><br>Settings</td>
+<td style="background-color:#2e6830" onclick="showApp('games')"><img src="https://i.imgur.com/F5QalHS.png" width="70px" height="70px"><br>intertainment</td></tr>
+
+        <tr style="padding:10px"><td style="background-color:#a91143"><a href="https://dcoder.tech/"><img src="https://i.imgur.com/oQ4wQej.png" width="70px" height="70px"><br>dcoder</a></td>
+<td onclick="showApp('browser')" style="background-color:#2196f3"><img src="https://i.imgur.com/lj4WohC.png" width="70px" height="70px"><br>Browser</td></tr>
+
+    </tbody></table>
+
+    </div>
+
+<div class="navbar" id="navbar">
+  <div class="active fa fa-th-large" id="active" onclick="toggleDisplay('home')"></div>
+  <div class="fa fa-rss" style="float:right"></div>
+  <div class="fa fa-battery-3" style="float:right"></div>
+<div class="fa fa-bell" style="float:right"></div>
+</div>
+<div id="calculator" class="zoom" style="display:none">
+    <button onclick="showApp('home')" class="btn topleft fa fa-remove"></button>
+ <div class="header" style="height:5%;padding-top:10px;background-color:#b36b00"><h2>Calculator</h2></div>
+ <div class="centered">
+    <div class="screen" id="screen"></div>
+<button class="btn" onclick="Addfunc('1')">1</button>
+<button class="btn" onclick="Addfunc('2')">2</button>
+<button class="btn" onclick="Addfunc('3')">3</button><br>
+<button class="btn" onclick="Addfunc('4')">4</button>
+<button class="btn" onclick="Addfunc('5')">5</button>
+<button class="btn" onclick="Addfunc('6')">6</button><br>
+<button class="btn" onclick="Addfunc('7')">7</button>
+<button class="btn" onclick="Addfunc('8')">8</button>
+<button class="btn" onclick="Addfunc('9')">9</button><br>
+<button class="btn" onclick="Addfunc('0')">0</button><br><br>
+<button class="btn" onclick="Addfunc('+')">+</button>
+<button class="btn" onclick="Addfunc('-')">-</button>
+<button class="btn" onclick="Addfunc('*')">*</button><br>
+<button class="btn" onclick="Addfunc('/')">/</button>
+<button class="btn" onclick="document.getElementById('screen').innerHTML = Math.sqrt(document.getElementById('screen').innerHTML)">√</button>
+<button class="btn" onclick="document.getElementById('screen').innerHTML += Math.PI">Pi</button><br>
+<button class="btn" onclick="Calc()">=</button>
+<button class="btn" onclick="Clear()">C</button>
+<button class="btn" onclick="Fact()">x!</button>
+  </div>
+</div>
+<div id="converter" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="background-color:#074b83;font-size:25px" class="btn topleft fa fa-remove"></button><div class="header" style="height:auto;background-color:#074b83;"><h2>Converter</h2></div>
+ <div class="centered">
+    <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn" style="background-color:#0b78d1;">Choose a unit</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a onclick="showUnit('temp')">Temperature</a>
+    <a onclick="showUnit('weight')">Weight</a>
+    <a onclick="showUnit('length')">Length</a>
+    <a onclick="showUnit('speed')">Speed</a>
+  </div>
+</div>
+    <div id="temp"><h3>Temperature</h3>
+        <input type="number" onkeyup="convTemp('C')" onchange="convTemp('C')" id="C"><br>°C<br>
+        <input type="number" onkeyup="convTemp('F')" onchange="convTemp('F')" id="F"><br>°F<br>
+        <input type="number" onkeyup="convTemp('K')" onchange="convTemp('K')" id="K"><br> K<br>
+    </div>
+    <div id="weight"><h3>Weight</h3>
+        <input type="number" onkeyup="convWeight('kg')" id="kg"><br>Kg<br>
+        <input type="number" onkeyup="convWeight('g')" id="g">Gram<br>
+    </div>
+    <div id="length"><h3>Length</h3>
+        <input type="number" onkeyup="convLength('km')" id="km"><br>Km<br>
+        <input type="number" onkeyup="convLength('m')" id="m"><br>M<br>
+        <input type="number" onkeyup="convLength('cm')" id="cm"><br>Cm<br>
+        <input type="number" onkeyup="convLength('mi')" id="mi">Miles<br>
+    </div>
+    <div id="speed"><h3>Speed</h3>
+        <input type="number" onkeyup="convSpeed('km')" id="kmph">kmph<br>
+        <input type="number" onkeyup="convSpeed('mi')" id="mph">mph<br>
+        <input type="number" onkeyup="convSpeed('m')" id="ms"><br>m/s<br>
+    </div>
+</div>
+</div>
+<div id="ToDoList" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="font-size:25px" class="btn topleft fa fa-remove"></button>
+<div id="myDIV" class="header" style="background-color:#9e8e00">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+<ul id="myUL">
+</ul>
+</div>
+<div id="setting" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="font-size:25px" class="btn topleft fa fa-remove"></button>
+<div class="header" style="background-color:#074b83">
+  <h2 style="margin:5px">Settings</h2></div>
+  <button class="accordion"><span class="fa fa-unlock-alt" style="float:left"></span> Password</button>
+<div class="panel">
+    Your current Password is:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i id="pass"></i><br>
+	<hr><h2>Change Password</h2><input type="password" style="width:60%;border:1px solid #bbb" placeholder="Your new password..." id="passi">
+	<button class="addBtn" style="float:right;" onclick="toggletype('passi')">View password</button><button class="addBtn" style="float:right;" onclick="changePass()">Change Password</button></div>
+    <button class="accordion"><span class="fa fa-television" style="float:left"></span> Wallpaper</button>
+<div class="panel"><h2>Change Wallpaper</h2>
+<h4>Available Wallpapers</h4>
+<img onclick="windows.changeWallpaper('https://i.imgur.com/7DeTlOW.png')" src="https://i.imgur.com/7DeTlOW.png" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/NonFezp.jpg')" src="https://i.imgur.com/NonFezp.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/qZNI22Y.jpg')" src="https://i.imgur.com/qZNI22Y.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/RmmXmnX.jpg')" src="https://i.imgur.com/RmmXmnX.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/J4vg7YO.jpg')" src="https://i.imgur.com/J4vg7YO.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/EEWtWj1.jpg')" src="https://i.imgur.com/EEWtWj1.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/Mn33er4.jpg')" src="https://i.imgur.com/Mn33er4.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/5UknlBq.jpg')" src="https://i.imgur.com/5UknlBq.jpg" width="70px" height="70px">
+<img onclick="windows.changeWallpaper('https://i.imgur.com/ZXiEVLV.jpg')" src="https://i.imgur.com/ZXiEVLV.jpg" width="70px" height="70px">
+</div>
+  <button class="accordion"><span class="fa fa-info" style="float:left"></span> Info</button><div class="panel">
+  <h2 style="text-align:center;">Windows sim info</h2>
+  <ul>
+  <li>Name: <span style="float:right">sim windows</span></li>
+  <li>Version: <span style="float:right">v1.0.0</span></li>
+  <li>Author: <span style="float:right">shamil</span></li>
+  <li>Made in: <span style="float:right">ny staten island</span></li>
+  <li>Bugs: <span style="float:right">11</span></li>
+  <li>Release date: <span style="float:right">2 days ago (3<sup>rd</sup>)</span></li>
+  </ul></div>
+<button class="accordion"><span class="fa fa-tachometer" style="float:left"></span>About your computer</button>
+<div class="panel">
+<ul>
+  <li id="usercords"></li>
+  <li id="pixelDepth"></li>
+  <li id="BrowserName"></li>
+  <li id="BrowserVersion"></li>
+  <li id="isOnline"></li>
+  <li id="Browserlang"></li>
+  <li id="availheight"></li>
+  <li id="availwidth"></li>
+<li id="width"></li>
+<li id="height"></li>
+</ul>
+</div>
+</div>
+<div id="search" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="font-size:25px" class="btn topleft fa fa-remove"></button>
+<div class="header" style="background-color:#0b781">
+  <h2 style="margin:5px">Search</h2>
+  <input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Search windows...." title="Type in the keywords you want to search for">
+</div>
+<ul id="myUL1">
+<li onclick="showApp('calculator')"><a>Calculator</a></li>
+<li onclick="showApp('converter')"><a>Converter</a></li>
+<li onclick="showApp('home')"><a>Time</a></li>
+<li onclick="showApp('tools')"><a>More tools</a></li>
+<li onclick="showApp('games')"><a>intertainment/games/music/websites/movies</a></li>
+<li onclick="showApp('setting')"><a>Settings</a></li>
+<li onclick="showApp('browser')"><a>Browser</a></li>
+<li onclick="showApp('ToDoList')"><a>To-do list</a></li>
+<li onclick="windows.shutDown()"><a>Shut down</a></li>
+<li onclick="showApp('setting')"><a>Password</a></li>
+<li onclick="showApp('setting')"><a>Wallpaper</a></li>
+<li onclick="showApp('setting')"><a>Info</a></li>
+<li onclick="showApp('tools')"><a>Features</a></li>
+<li onclick="showApp('tools')"><a>About windows</a></li>
+<li onclick="windows.hideAll()"><a>Desktop</a></li>
+</ul>
+</div>
+<div id="games" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="font-size:25px" class="btn topleft fa fa-remove"></button>
+<div class="header" style="background-color:lightblue">
+  <h2>entertainment/games/music/websites/movies</h2>
+</div>
+<ul id="gamesList" class="zoom">
+<li onclick="playGame('game1')"><a>Snake io/game</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>
+<li onclick="playGame('game2')"><a>paper io/game</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>
+<li onclick="playGame('game3')"><a>geomertry dash io/game</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>
+<li onclick="playGame('game4')"><a>hole.io/game</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>    
+<li onclick="playGame('bing')"><a>web browser/website</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>
+<li onclick="playGame('youtube')"><a>youtube/movies</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>
+<li onclick="playGame('music')"><a>shamil,s music libary/music</a><span style="float:right;font-size:15px;color:#bbb;"></span></li>
+</ul>
+<div id="game1" style="height:200px;display:none;width:100%"><iframe src="http://slither.io/"></iframe><br><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«   Back to list</span></div>
+<div id="game2" style="height:200px;display:none;width:100%"><iframe src="https://paperio2.site/"></iframe><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«    Back to list</span></div>
+<div id="game3" style="height:200px;display:none;width:100%"><iframe src="https://geometrydash.io/"></iframe><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«    Back to list</span></div>
+<div id="game4" style="height:200px;display:none;width:100%"><iframe src="https://hole-io.com/"></iframe><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«    Back to list</span></div>    
+<div id="bing" style="height:200px;display:none;width:100%"><iframe src="https://www.bing.com/"></iframe><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«    Back to list</span></div>
+<div id="youtube" style="height:200px;display:none;width:100%"><iframe src="https://www.bing.com/videos/search?q=youtube&amp;FORM=HDRSC3"></iframe><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«    Back to list</span></div>
+<div id="music" style="height:200px;display:none;width:100%"><iframe src="https://code.dcoder.tech/files/design/5f199caf2e18b829a5d9e01a/shamil,s-music-library"></iframe><span onclick="playGame('gamesList')" style="text-align:center;width:100%">«    Back to list</span></div>     
+</div>
+<div id="alerter" class="zoom">
+<h2><span id="alerterTitle"></span></h2>
+<hr><span id="alerterContent"></span>
+</div>
+<div id="browser" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="font-size:25px" class="btn topleft fa fa-remove"></button>
+<div class="header" style="background-color:#bbb">
+<div class="browser">
+  <div class="browserRow">
+    <div class="Browsercolumn Browserleft">
+      <span class="Browserdot1" style="background:#FF9800;"></span>
+      <span class="Browserdot2" style="background:white;"></span>
+      <span class="Browserdot3" style="background:#4CAF50;"></span>
+	  <span id="browserloader" style="width:30px;font-size:25px" class="fa fa-refresh" onclick="GoToWeb()"></span>
+    </div>
+    <div class="Browsercolumn Browsermiddle">
+     <pre><input type="text" placeholder="http://www.example.com" id="address" spellcheck="off" autocomplete="on"></pre>
+    </div>
+    <div class="Browsercolumn Browserright">
+      <div style="float:right">
+        <span style="width:30px;font-size:25px" class="btn fa fa-arrow-right" onclick="GoToWeb()"></span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="Browsercontent">
+    <iframe id="browserRes"></iframe>
+  </div>
+</div>
+<div id="tools" class="zoom" style="display:none">
+    <button onclick="showApp('home')" style="font-size:25px" class="btn topleft fa fa-remove"></button>
+<div class="header" style="background-color:#c5170a">
+  <h2 style="margin:5px">More tools</h2></div>
+  <ul>
+  <li onclick="windows.shutDown()" class="shutdown">Shut Down</li>
+<li><div class="advertise"><h1>Try sim on</h1>
+<div class="center">
+  <div class="smartphone">
+    <div class="content">
+    <p style="font-size:10px"></p>
+    </div>
+  </div>
+
+  <div class="tablet">
+    <div class="content">
+    <p style="font-size:10px;padding-left:10px;transform:rotate(0deg)"></p>
+    </div>
+  </div>
+
+  <div class="laptop">
+    <div class="content">
+     <p style="font-size:10px"></p>
+   </div>
+  </div>
+</div>
+</div></li>
+<li class="advertise" style="color:#555"><span class="fa fa-quote-left fa-pull-left fa-border" style="font-size:50px"></span><h2>Sky is the limit!<br> And thus any improvement or modification is invited!!</h2><span class="fa fa-quote-right fa-pull-right fa-border" style="font-size:50px"></span> 
+</li></ul></div>
+<div id="switchOn" style="display:none;" onclick="loadWin()">power on</div>
+    <style>.centered{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ text-align: center;}
+body{
+  margin:0;
+background:black;
+    color:black;}
+.loader1 {
+    width:50px;
+    height:50px;
+    border:20px solid black;
+    border-left:20px solid lightblue;
+    border-radius:50%;
+    animation: spin;
+    animation-iteration-count:infinite;
+    animation-duration:1s;
+    animation-timing-function: linear;
+    cursor:wait;}
+@keyframes spin{
+from{transform: rotateZ(0deg);}
+to{transform: rotateZ(360deg);}}
+.topleft{left:0;top:0;position:fixed;}
+.login {font-size:30px;color:white;}
+.in{width:auto;height:30px;font-size:25px;color:black;}
+.btn{
+width:auto;
+height:35px;
+text-align:center;
+border:none;
+background-color:inherit;
+color:white;
+padding:7px 7px 7px 7px;
+font-size:15px;}
+#home{color:white;font-size:30px;}
+.homeCont{color:white;font-size:20px;padding:5px;float:left;scroll:auto;}
+a {text-decoration:none;color:white;}
+table{width:100%;left:0;right:0;top:0;}
+td{height:25%;width:33.333%;background-color:#2196f3;text-align:center;}
+.navbar {
+overflow: hidden;
+background-color: #555;
+position: fixed;bottom: 0;
+width: 100%;
+display:none;
+z-index:1;
+opacity:0.9;}
+.navbar div {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;}
+.navbar div:hover {background: #bbb;color: black;}
+.navbar .active {background-color: #2196f3;color: white;}
+.home {padding: 0;margin-bottom: 30px;}
+.zoom{animation:zoom;animation-duration:0.6s;animation-iteration-count:1;}
+@keyframes zoom{
+from{transform: scale(0);}
+to{transform: scale(1);}}
+#time{font-family:"Lemonada",Monospace;}
+#calculator .centered .btn{
+ width:35px;
+ background-color:orange;
+ border:none;
+ margin:0 0 0 0;
+ color:white;
+ font-size:25px;
+ padding: 0 0 0 0;}
+ .btn:hover{transform: scale(1.5);box-shadow:0 4px 10px 0 #111;}#calculator .centered .btn:hover{border:2px solid #b36b00;box-shadow:0 4px 10px 0 #111;}
+#calculator .screen{font-size:25px;color:white;}
+#calculator{font-family:Arial, Monospace;}
+.dropbtn {
+background-color: #111;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
+cursor: pointer;}
+.dropbtn:hover, .dropbtn:focus {background-color: #333;}
+.dropdown {position: relative;display: inline-block;}
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+overflow: auto;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+z-index: 1;}
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+font-family:Arial;}
+.show {display:block;}
+#temp, #weight, #length, #speed {margin-top:20px;left:0;display:none;}
+input{
+border:1px solid #fff;
+padding-left:2px;
+color:black;
+height:35px;
+font-size:20px;}
+#converter{font-size:15px;font-family:Arial;}
+ul {margin: 0;padding: 0;}
+ul li {
+cursor: pointer;
+position: relative;
+padding: 12px 8px 12px 40px;
+list-style-type: none;
+background: #eee;
+font-size: 18px;
+transition: 0.2s;
+user-select: none;
+color:black;}
+ul li:nth-child(odd) {background: #f9f9f9;}
+ul li:hover {background: #ddd;}
+.close {
+position: absolute;
+right: 0;
+top: 0;
+padding: 12px 16px 12px 16px;}
+.close:hover {background-color: #f44336;color: white;}
+.header {
+background-color: #4caf50;
+padding: 30px 40px;
+color: white;
+text-align: center;
+font-family:"Allerta Stencil";}
+.header:after {content: "";display: table;clear: both;}
+.addBtn {
+padding: 10px 10px;
+height:auto;
+width: 15%;
+background: #d9d9d9;
+color: #555;
+float: left;
+text-align: center;
+font-size: 16px;
+cursor: pointer;
+transition: 0.3s;}
+.addBtn:hover {background-color: #bbb}
+ul a{color:#222;}
+h5{margin-top:5px;margin-bottom:5px;}
+#games{font-family:"Advent Pro";}
+iframe{width:100%;height:400px;}
+span{cursor:default;}
+.accordion {
+background-color: #eee;
+color: #444;
+cursor: pointer;
+padding: 18px;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+font-size: 15px;
+transition: 0.4s;}
+.activeacc, .accordion:hover {background-color: #ccc; }
+.panel {
+padding: 18px 18px;
+display: none;
+background-color: white;
+overflow: hidden;
+color:#111;
+font-family:"Roboto";}
+.fa{padding-right:8px;}
+#games span{
+padding: 7px 7px 7px 7px;
+text-align:center;}
+#alerter{
+border-radius:5px;
+padding:10px 10px;
+position:fixed;
+display:none;
+z-index:1;
+background-color:black;
+opacity:0.8;
+bottom:40px;
+color:white;
+right:20px;
+font-family:"Arvo";
+min-height:100px;
+min-width:160px;
+max-width:200px;
+height:auto;
+ }
+ #alerter:after{
+ content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+border-width: 15px;
+border-style: solid;
+border-color: lightblue transparent transparent transparent;
+}
+.Browsercontainer {
+    border: 3px solid #f1f1f1;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.BrowserRow {
+    padding: 10px;
+    background: #f1f1f1;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.Browsercolumn {
+    float: left;
+}
+
+.Browserleft {
+    width: 15%;
+}
+
+.Browserright {
+    width: 10%;
+}
+
+.Browsermiddle {
+    width: 75%;
+    margin-right:0;
+    padding:0 0 0 0;
+}
+.BrowserRow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.Browserdot1, .Browserdot2, .Browserdot3 {
+    margin-top: 4px;
+    height: 20px;
+    width: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+#browser input[type=text] {
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    background-color: white;
+    margin-top: -8px;
+    height: 25px;
+    color: #666;
+    padding: 5px;
+}
+#browser .btn{
+margin-left:0;
+background-color:#bbb;
+border:none;
+border-radius:3px;
+padding:5px;
+height:25px;
+margin-right:0;
+margin-top: -8px;
+ }
+.Browsercontent {
+    padding: 10px;
+}
+.slidecontainer {
+    width: 100%;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+.slider:hover {
+    opacity: 1;
+}
+.fa-remove:hover{background-color:#f44336;}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 55px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+::-webkit-scrollbar {
+    width: 20px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    background: #bbb;
+}
+::-webkit-scrollbar-thumb {
+    background: #2196f3; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #074b83; 
+}
+#switchOn{
+width:auto;
+height:auto;
+padding-top:25px;
+padding-left:30px;
+padding-bottom:25px;
+padding-right:30px;
+text-align:center;
+background-color:#444;
+color:white;
+box-shadow:0 4px 10px 0 #2196f3;
+position:fixed;
+bottom:10px;
+left:40%;
+font-family:"IBM Plex Mono";
+font-size:larger;}#switchOn:hover{transform: scale(1.3)}
+.shutdown{
+color:#000;
+text-align:left;
+font-size:25px;
+font-family:"Advent Pro";}
+.loader .centered{font-family:"Roboto";}
+.loader .centered .large{font-size:90px;}
+.center {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 606px;
+  height: 200px;
+}
+.smartphone {
+  float: left;
+  width: 80px;
+  height: 120px;
+  margin: 40px 0 0 0;
+  border: 5px black solid;
+  border-top-width: 15px;
+  border-bottom-width: 20px;
+  border-radius: 10px;
+}
+.smartphone:before {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 3px;
+  margin: -9px auto;
+  background: white;
+  border-radius: 4px;
+}
+.smartphone:after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 4px auto;
+  background: white;
+  border-radius: 10px;
+}
+.smartphone .content {
+  width: 60px;
+  height: 100px;
+  margin:15px 0 0 0;
+  padding: 10px;
+  background: white;
+  overflow:hidden;
+  font-family:'Roboto';
+  background-image: url("https://i.imgur.com/14DjcCV.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  font-size:50px;
+  color:white;
+  font-weight:bolder;
+}
+.tablet {
+  float: left;
+  width: 120px;
+  height: 160px;
+  margin: 0 80px;
+  border: 5px black solid;
+  border-top-width: 15px;
+  border-bottom-width: 20px;
+  border-radius: 10px;
+}
+.tablet:before {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 3px;
+  margin: -9px auto;
+  background: white;
+  border-radius: 4px;
+}
+.tablet:after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 4px auto;
+  background: white;
+  border-radius: 10px;
+}
+.tablet .content {
+  width: 120px;
+  height: 160px;
+  margin: 15px 0 0 0;
+  background: white;
+  overflow: hidden;
+  z-index: 1000;
+  font-family:'Roboto';
+  background-image: url("https://i.imgur.com/14DjcCV.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  font-size:50px;
+  color:white;
+  font-weight:bolder;
+}
+.laptop {
+  float: left;
+  width: 200px;
+  height: 120px;
+  margin: 56px 0 0 0;
+  border: 5px black solid;
+  border-radius: 2px;
+}
+.laptop:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  margin: 126px 0 0 80px;
+  background: white;
+  z-index: 1;
+}
+.laptop:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 240px;
+  height: 8px;
+  margin: 6px 0 0 -20px;
+  background: black;
+  border-radius: 2px;
+}
+.laptop .content {
+  width: 180px;
+  height: 100px;
+  margin: 0 0 0 0;
+  padding: 10px;
+  overflow: hidden;
+  font-family:'Roboto';
+  background-image: url("https://i.imgur.com/14DjcCV.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  font-size:50px;
+  color:white;
+  font-weight:bolder;
+}
+.advertise{
+height:300px;}
+.advertise h1{padding-left:30px;text-align:center;font-family:"Actor";color:white;margin-bottom:30px;}</style>
+ <script>alert("made by shamil let it load for 5 min because it has a lot of links and connections to make if it is loading for too long that means there is an error or the is no connection to wifi. best works on mobile devices when landscape and zoomed out as much as possibale password for sim is 2008");
+console.time()
+var windows = {
+    psw : "2008",
+	changeWallpaper: function(src){document.body.style.backgroundImage  = "url(\"" + src + "\")";
+					 showAlert("Congrats!","Wallpaper changed successfully!<br> Your new wallpaper is:<br><img src=\"" + src + "\" width=\"100px\" height = \"100px\" />",3000);},
+	shutDown: function(){
+			  for(i=0;i<windows.apps.length;i++){document.getElementById(windows.apps[i]).style.display = "none";}
+			  document.getElementsByClassName("loader")[0].style.display = "block";
+			  setTimeout(function(){document.getElementsByClassName("loader")[0].style.display = "none";document.body.style.backgroundImage = "";document.body.style.background = "#444";
+			  document.getElementById("switchOn").style.display = "block";},3000);},
+	apps: ["calculator","home","converter","ToDoList","setting","search","games","browser","tools","navbar"],
+	hideAll: function(){for(y = 0;y<windows.apps.length-1;y++){document.getElementById(windows.apps[y]).style.display = "none";}},
+}
+function MyDate(){
+    var date = new Date();
+    this.getHours = date.getHours();
+    this.getMinutes = function(){if(date.getMinutes()<10){return "0" + date.getMinutes()}else{return date.getMinutes()}}
+    this.getSeconds = function(){if(date.getSeconds()<10){return "0" + date.getSeconds()}else{return date.getSeconds()}}
+    this.getDate = date.getDate();
+    this.getMonth = date.getMonth() + 1;
+    this.getFullYear = date.getFullYear() ;
+}
+window.onload = function(){console.timeEnd();loadWin();
+var acc = document.getElementsByClassName("accordion");
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("activeacc");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}}
+function loadWin(){
+document.getElementById("active").className = "fa fa-th-large active";
+document.getElementById('switchOn').style.display = "none";
+document.body.style.backgroundImage = "url(https://i.imgur.com/14DjcCV.jpg)";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundSize = "cover";
+document.body.style.height = window.innerHeight + "px";
+document.getElementsByClassName("loader")[0].style.display = "block";
+document.getElementsByClassName("advertise")[0].style.width = (window.innerWidth - 60) + "px";
+var time = document.getElementById('time');
+document.getElementById('pass').innerHTML = windows.psw;
+setInterval(function(){var d = new MyDate();time.innerHTML = d.getHours + ":" + d.getMinutes() + ":" + d.getSeconds() + "<h5>on</h5>" + d.getDate + "/" + d.getMonth + "/" + d.getFullYear;
+}, 500);
+	setTools();
+    setTimeout(function(){
+        document.getElementsByClassName("loader")[0].style.display = "none";
+            document.getElementsByClassName("login")[0].style.display = "block";
+    }, 2000);
+    document.getElementsByClassName("navbar")[0].style.top = (window.innerHeight - 45) + "px";
+var td = document.getElementsByTagName("td");
+for(i=0;i<td.length;i++){
+td[i].style.height = ((window.innerHeight * 0.25) - 15) + "px";}
+}
+function triggerByEnter(event){var x = event.keyCode;
+if(x == 13){validate();}
+}
+function validate(){
+    var psw = document.getElementsByClassName("in")[0].value;
+    var pass = windows.psw;
+    if(psw == pass){
+       document.getElementsByClassName("loader")[0].style.display = "block";
+       setTimeout(function(){
+        document.getElementsByClassName("loader")[0].style.display = "none";
+       document.getElementById("home").style.display = "block";
+    }, 2000);
+        document.body.style.backgroundImage = "https://i.imgur.com/14DjcCV.jpg";
+       document.getElementsByClassName("login")[0].style.display = "none";
+document.getElementsByClassName("navbar")[0].style.display = "block";
+showAlert('Welcome to windows!',"Try everything every function and send me any bug or improvement so that I can improve it and make it as much realistic as I can!!<br>Thanks for the visit",7000);
+}else{
+alert("Wrong Password \n Correct password is: \"" + 2008 + "\"");
+}
+}
+function toggleDisplay(z){
+var apps = ["calculator","converter","ToDoList","setting","search","games","browser","tools"];
+    for(i=0;i<apps.length;i++){
+document.getElementById(apps[i]).style.display= "none";}
+var z1 = document.getElementById(z);
+var z2 = document.getElementById("active");
+if(z1.style.display == "block"){z1.style.display = "none";z2.className = "fa fa-th-large";}else{z1.style.display = "block";z1.class = "zoom";z2.className = "fa fa-th-large active";}  
+}
+function showApp(id){
+    var apps = ["calculator","home","converter","ToDoList","setting","search","games","browser","tools"];
+    for(i=0;i<apps.length;i++){
+      if(apps[i] == id){
+          if(apps[i] == 'home'){
+          document.getElementById(id).style.display = "block";document.getElementById("active").className = "fa fa-th-large active";}else{document.getElementById(id).style.display = "block";document.getElementById("active").className = "fa fa-th-large";}
+      }else{document.getElementById(apps[i]).style.display = "none";}  
+    }
+}
+function Addfunc(z){
+var div = document.getElementById('screen');
+div.innerHTML += z;}
+function Calc(){
+var div = document.getElementById('screen');
+var x = eval(div.innerHTML);
+if(x == 'Infinity'){
+    alert("Don't divide by zero!");
+    div.innerHTML = "";
+}else{
+div.innerHTML = x;
+}
+}
+function Clear(){
+var div = document.getElementById('screen');
+div.innerHTML = "";}
+function Fact(n){
+var div = document.getElementById('screen');
+var v = factorial(div.innerHTML);
+div.innerHTML = v;
+}function factorial(n){
+    if(n==1){
+        return n;
+    }else{
+         return n * factorial(n-1);
+    }
+}
+function convTemp(from){
+    var c = document.getElementById('C');
+    var f = document.getElementById('F');
+    var k = document.getElementById('K');
+    if(from == 'C'){
+     f.value = c.value*9/5 + 32;
+     k.value = eval( c.value + "+273");
+}else{
+    if(from == 'F'){
+        c.value = (f.value-32) * 5/9;
+     k.value = eval( c.value + "+273");
+    }else{
+        c.value = k.value - 273;
+        f.value = c.value*9/5 + 32;
+    }
+}
+}
+function convLength(from){
+var m = document.getElementById("m");
+var km = document.getElementById("km");
+var mi = document.getElementById("mi");
+var cm = document.getElementById("cm");
+    if(from == 'km'){
+        m.value = km.value * 1000;
+        cm.value = m.value * 100;
+        mi.value = km.value/1.6;
+    }else{
+        if(from == 'm'){
+        km.value = m.value / 1000;
+        cm.value = m.value * 100;
+        mi.value = km.value/1.6;}
+    else{
+      if(from=='mi'){
+        km.value = mi.value*1.6;
+        m.value = km.value * 1000;
+        cm.value = m.value * 100;
+        }else{
+            m.value = cm.value /100;
+        km.value = m.value / 1000;
+        mi.value = km.value/1.6;
+        }
+        }
+    }
+}
+function convWeight(from){
+    var g = document.getElementById("g");
+    var kg = document.getElementById("kg");
+    if(from == 'kg'){
+        g.value = kg.value * 1000;
+    }else{
+        kg.value = g.value / 1000;
+    }
+}
+
+function convSpeed(from){
+    var mph = document.getElementById("mph");
+    var kmph = document.getElementById("kmph");
+    var ms = document.getElementById("ms");
+    if(from == 'km'){
+        mph.value = kmph.value / 1.6;
+        ms.value = kmph.value * 5 / 18;
+    }else{
+        if(from == 'mi'){
+            kmph.value = mph.value * 1.6;
+            ms.value = kmph.value * 5 / 18;
+        }else{
+            kmph.value = ms.value * 18 / 5;
+            mph.value = kmph.value / 1.6;
+        }
+    }
+}
+function showUnit(id){
+    var units = ["temp","weight","length","speed"];
+    for(i=0;i<units.length;i++){
+        if(units[i] == id){
+          document.getElementById(id).style.display = "block";   
+        }else{
+            document.getElementById(units[i]).style.display = "none";
+        }
+    }
+}
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+var close = document.getElementsByClassName("close")
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+function myFunction1() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput1");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL1");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+function playGame(id){
+    var games = ["game1","game2","game3","game4","bing","youtube","music"];
+    for(n = 0;n<games.length;n++){
+    if(games[n] == id){document.getElementById(id).style.display = "block";}else{document.getElementById(games[n]).style.display = "none";}}
+}
+function toggletype(id){
+var i = document.getElementById(id);
+if(i.type === "text"){i.type = "password"}else{i.type = "text"}}
+function changePass(){
+var i = windows;
+i.psw = document.getElementById("passi").value;document.getElementById("pass").innerHTML = i.psw;
+document.getElementById("alerter").style.display = "block";document.getElementById("alerterTitle").innerHTML = "Note:";
+document.getElementById("alerterContent").innerHTML = "<audio autoplay><source src=\"https://vignette.wikia.nocookie.net/khangnd/images/5/58/Windows7-startup-sound.ogg\"></audio>After changing the password DO NOT reload the page as the password will be reset to myPass. For experiencing the effect go to <b>More tools > Shutdown </b>";
+setTimeout(function(){document.getElementById("alerter").style.display = "none";},10000);}
+function GoToWeb(){
+var address = document.getElementById("address").value;
+var iframe = document.getElementById("browserRes");
+document.getElementById("browserloader").className = "fa fa-spinner fa-pulse";
+try{iframe.src = address;
+iframe.onload = function(){iframe.style.display = "block";document.getElementById("browserloader").className = "fa fa-refresh";}}
+catch(err){showAlert("Alert!","Browser was unable to show the requested page<br>Try checking:<br>(1) Your internet connection<br>(2) Wether you've entered \"https\" or \"http\" before the address<br>(3) Wether you've entered a website address belonging to google(check your console for more info",5000);}
+}
+function showAlert(title, content, time){
+document.getElementById("alerter").style.display = "block";
+document.getElementById("alerterTitle").innerHTML = title + "<audio autoplay><source src=\"https://vignette.wikia.nocookie.net/khangnd/images/5/58/Windows7-startup-sound.ogg\"></audio>";
+document.getElementById("alerterContent").innerHTML = content;
+setTimeout(function(){document.getElementById("alerter").style.display = "none";}, time);
+}
+function setTools(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        document.getElementById("usercords").innerHTML = "Geolocation is not supported by this browser.";
+    }
+	var x = "Color resolution: " + screen.pixelDepth + " bits per pixel";
+    document.getElementById("pixelDepth").innerHTML = x;
+	document.getElementById("BrowserVersion").innerHTML = "Browser version: " + navigator.appVersion;
+	document.getElementById("BrowserName").innerHTML = "Browser Name: " + navigator.appName;
+	document.getElementById("Browserlang").innerHTML = "Language of the browser: " + navigator.language;
+	document.getElementById("isOnline").innerHTML = "You are online(true/false): " + navigator.onLine;
+	document.getElementById("availwidth").innerHTML = "Available width of your browser: " + screen.availWidth + "px";
+	document.getElementById("availheight").innerHTML = "Available height of your browser: " + screen.availHeight + "px";
+	document.getElementById("height").innerHTML = "Total height of your browser: " + screen.height + "px";
+	document.getElementById("width").innerHTML = "Total width of your browser: " + screen.width + "px";
+}
+
+function showPosition(position) {
+    document.getElementById("usercords").innerHTML = "Your current position:<br>Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;}
+
+</script>   
+
+</body></html>
